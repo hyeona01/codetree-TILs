@@ -16,11 +16,11 @@ if n%2 == 0:
 else:
     for col in range(n-1,-1,-1):
         if col%2==1:
-            for row in range(n-1,-1,-1):
+            for row in range(n):
                 arr[row][col] =num
                 num += 1
         else:
-            for row in range(n):
+            for row in range(n-1,-1,-1):
                 arr[row][col] =num
                 num += 1
 
