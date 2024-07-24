@@ -1,3 +1,5 @@
+import math
+
 def solution(a,o,c):
     if o == '+':
         return int(a)+int(c)
@@ -11,4 +13,4 @@ def solution(a,o,c):
     
 a, o, c = input().split()
 
-print(a,o,c,"=",round(solution(a,o,c)))
+print(a,o,c,"=",math.trunc(solution(a,o,c)))
