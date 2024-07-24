@@ -11,4 +11,4 @@ def solution(a,o,c):
     
 a, o, c = input().split()
 
-print(a,o,c,"=",solution(a,o,c))
+print(a,o,c,"=",round(solution(a,o,c)))
