@@ -17,9 +17,10 @@ c=int(c)
 
 if o == '+':
     print(a, o, c, "=", plus(a, c))
-if o == '-':
+elif o == '-':
     print(a, o, c, "=", minus(a, c))
-if o == '*':
+elif o == '*':
     print(a, o, c, "=", times(a, c))
-if o == '/':
+elif o == '/':
     print(a, o, c, "=", divide(a, c))
+else : False
