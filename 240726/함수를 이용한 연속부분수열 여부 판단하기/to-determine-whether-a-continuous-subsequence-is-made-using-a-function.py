@@ -4,10 +4,11 @@ B = list(map(int, input().split()))
 
 def solution(a, b):
     if b[0] in a:
-        idx = a.index(b[0])
-        if a[idx:(idx+len(b))] == b:
-            return True
-        else: return False
+        idx = [i for i, value in enumerate(a) if value == b[0]]
+        for i in idx:
+            if a[i:(i+len(b))] == b:
+                return True
+    return False
 
 if solution(A,B):
     print("Yes")
