@@ -3,7 +3,7 @@ def solution(A):
     cnt = A.count(al)
 
     for i in range(cnt):
-        A.replace(al, '')
+        A = A.replace(al, '')
 
     return A
 
