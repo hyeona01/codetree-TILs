@@ -14,7 +14,7 @@ for i in dir:
         nx += 1
         ny += 1
     else:
-        x = dx[nx%4]
-        y = dy[ny%4]
+        x += dx[nx%4]
+        y += dy[ny%4]
 
 print(x, y)
