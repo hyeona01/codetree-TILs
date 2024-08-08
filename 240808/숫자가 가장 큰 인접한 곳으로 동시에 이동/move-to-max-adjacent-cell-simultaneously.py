@@ -1,7 +1,3 @@
-# 상하좌우
-dxs = [-1, 1, 0, 0]
-dys = [0, 0, -1, 1]
-
 # 입력받기
 n, m, t = map(int, input().split())
 arr = []
@@ -19,13 +15,24 @@ next_count = [[0 for _ in range(n)] for _ in range(n)]
 def in_range(r, c):
     return r<n and r>=0 and c<n and c>=0
 # 구슬이 움직이는 함수
-def move(r, c):
+def get_max_pos(r, c):
+    # 상하좌우
+    dxs = [-1, 1, 0, 0]
+    dys = [0, 0, -1, 1]
+
     # 가장 커야하고, 동일하다면 상하좌우 우선순위 적용
     next_dir = 0
+    max_num = 0
     for dir in range(4):
-        if in_range(r+dxs[dir], c+dys[dir]) and arr[r+dxs[next_dir]][c+dys[next_dir]] < arr[r+dxs[dir]][c+dys[dir]]:
+        nr, nc = r + dxs[dir], c + dys[dir]
+        if in_range(nr, nc) and max_num < arr[nr][nc]:
+            max_num = arr[nr][nc]
             next_dir = dir # 가장 큰 방향
-    next_count[r+dxs[next_dir]][c+dys[next_dir]] += 1
+    return r+dxs[next_dir], c+dys[next_dir]
+
+def move(r, c):
+    next_r, next_c = get_max_pos(r, c)
+    next_count[next_r][next_c] += 1
 
 # 초기 위치를 count 격자에 표시하기
 for s in start:
@@ -42,12 +49,16 @@ for time in range(t):
         for j in range(n):
             if count[i][j]==1:
                 move(i, j)
-    count = next_count
+    
+    # 복사
+    for i in range(n):
+        for j in range(n):
+            count[i][j] = next_count[i][j]
 
     # count 격자에 2이상이 있는지 확인하고 0으로 바꾸기
     for i in range(n):
         for j in range(n):
-            if count[i][j] >= 2:
+            if count[i][j] > 1:
                 count[i][j] = 0
 
 result = 0
