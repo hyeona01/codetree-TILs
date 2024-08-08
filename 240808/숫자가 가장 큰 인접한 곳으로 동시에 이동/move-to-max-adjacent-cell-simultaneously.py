@@ -44,7 +44,7 @@ for time in range(t):
     # 격자에 구슬이 있으면 다음 위치로 이동시키기
     for i in range(n):
         for j in range(n):
-            if count[i][j]:
+            if count[i][j]==1:
                 move(i, j)
     count = next_count
 
