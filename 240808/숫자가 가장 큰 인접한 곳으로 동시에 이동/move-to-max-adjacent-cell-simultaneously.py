@@ -22,10 +22,14 @@ def in_range(r, c):
 def move(r, c):
     # 가장 커야하고, 동일하다면 상하좌우 우선순위 적용
     max_num = 0
+    is_changed = False
     for dx, dy in zip(dxs, dys):
         if in_range(r+dx, c+dy) and max(arr[r][c], max_num) < arr[r+dx][c+dy]:
             max_num = arr[r+dx][c+dy]
             next_count[r+dx][c+dy] += 1
+            is_changed = True
+    if not is_changed:
+        next_count[r][c] += 1
 
 # 초기 위치를 count 격자에 표시하기
 for s in start:
